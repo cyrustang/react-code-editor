@@ -16,6 +16,11 @@ import OutputDetails from "./OutputDetails";
 import ThemeDropdown from "./ThemeDropdown";
 import LanguagesDropdown from "./LanguagesDropdown";
 
+
+const RAPID_API_URL = "https://judge0-ce.p.rapidapi.com/submissions"
+const RAPID_API_HOST = "judge0-ce.p.rapidapi.com"
+const RAPID_API_KEY = "fbe7df1e99msh10f296f62348e88p18ba83jsn4f2f578fb950"
+
 const javascriptDefault = `/**
 * Problem: Binary Search: Search a sorted array for a target value.
 */
@@ -90,13 +95,13 @@ const Landing = () => {
     };
     const options = {
       method: "POST",
-      url: process.env.REACT_APP_RAPID_API_URL,
+      url: RAPID_API_URL,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+        "X-RapidAPI-Host": RAPID_API_HOST,
+        "X-RapidAPI-Key": RAPID_API_KEY,
       },
       data: formData,
     };
@@ -129,11 +134,11 @@ const Landing = () => {
   const checkStatus = async (token) => {
     const options = {
       method: "GET",
-      url: process.env.REACT_APP_RAPID_API_URL + "/" + token,
+      url: RAPID_API_URL + "/" + token,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
-        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+        "X-RapidAPI-Host": RAPID_API_HOST,
+        "X-RapidAPI-Key": RAPID_API_KEY,
       },
     };
     try {
